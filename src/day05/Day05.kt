@@ -1,3 +1,7 @@
+package day05
+
+import assert
+import readInput
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -125,7 +129,7 @@ fun main() {
             }
 
             println("Added line: $line")
-//            displayBoard(board, maxX, maxY)
+            //displayBoard(board, maxX, maxY)
         }
 
         val pointsWithOverlapping = board.filter { it.value > 1 }

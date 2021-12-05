@@ -1,3 +1,8 @@
+package day03
+
+import assert
+import readInput
+
 fun hasMoreZeros(input: List<String>, bitIndex: Int): Boolean {
     val zerosCount = input.count { number -> number[bitIndex] == '0' }
     val onesCount = input.count { number -> number[bitIndex] == '1' }

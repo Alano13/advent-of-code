@@ -1,3 +1,8 @@
+package day01
+
+import assert
+import readInput
+
 class Result(val previousNumber: Int = Int.MAX_VALUE, val count: Int = 0)
 
 fun findCountOfIncreasingDepth(depths: List<Int>): Int {

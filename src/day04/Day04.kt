@@ -1,3 +1,9 @@
+package day04
+
+import assert
+import parseNumberLine
+import readInput
+
 class Board(private val data: List<List<Int>> = ArrayList()) {
     fun getAllUnmarkedNumbers(numbersToMark: Set<Int>): List<Int> {
         return data.flatMap { it.filter { number -> !numbersToMark.contains(number) } }
