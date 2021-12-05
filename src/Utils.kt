@@ -16,3 +16,8 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
  * Assert that numbers are equals
  */
 fun assert(expected: Number, actual: Number) = check(expected == actual) { "Expected: $expected. Actual: $actual"}
+
+/**
+ * Parse line of numbers
+ */
+fun String.parseNumberLine(delimiter: String = ",") = this.split(delimiter).map { it.trim().toInt() }
