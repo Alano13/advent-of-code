@@ -9,12 +9,13 @@ fun main() {
         var position = 0
 
         for (line in input) {
-            val (command, number) = line.split(" ")
-
+            val (command, numberStr) = line.split(" ")
+            val number = numberStr.toInt()
+            
             when (command) {
-                "forward" -> position += number.toInt()
-                "down" -> depth += number.toInt()
-                "up" -> depth -= number.toInt()
+                "forward" -> position += number
+                "down" -> depth += number
+                "up" -> depth -= number
             }
         }
 
