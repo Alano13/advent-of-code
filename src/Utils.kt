@@ -29,6 +29,27 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
 fun assert(expected: Number, actual: Number) = check(expected == actual) { "Expected: $expected. Actual: $actual"}
 
 /**
+ * Run assertions
+ */
+fun <TOutput> runAssert(
+    dayNumber: Int,
+    testExpectedOutput: TOutput,
+    realExpectedOutput: TOutput,
+    func: (List<String>) -> TOutput,
+) {
+    val testInput = readTestInput(dayNumber)
+    val realInput = readInput(dayNumber)
+
+    val testResult = func(testInput)
+    println("Test result: $testResult")
+    check(testExpectedOutput == testResult) { "Expected: $testExpectedOutput. Actual: $testResult" }
+
+    val realResult = func(realInput)
+    println("Real result: $realResult")
+    check(realExpectedOutput == realResult) { "Expected: $realExpectedOutput. Actual: $realResult" }
+}
+
+/**
  * Parse line of numbers
  */
 fun String.parseNumberLine(delimiter: String = ",") = this.split(delimiter).map { it.trim().toInt() }
