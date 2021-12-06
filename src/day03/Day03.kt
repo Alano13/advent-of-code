@@ -1,8 +1,6 @@
 package day03
 
-import assert
-import readInput
-import readTestInput
+import runAssert
 
 fun hasMoreZeros(input: List<String>, bitIndex: Int): Boolean {
     val zerosCount = input.count { number -> number[bitIndex] == '0' }
@@ -79,21 +77,21 @@ fun main() {
         return oxygenRating * co2Rating
     }
 
-    val testInput = readTestInput(3)
-    val input = readInput(3)
+    println("Part 1:")
+    runAssert(
+        3,
+        198,
+        3895776,
+        ::part1
+    )
 
-    val result1 = part1(testInput)
-    assert(198, result1)
+    println()
+    println("Part 2:")
 
-    val actual1 = part1(input)
-    println(actual1)
-    assert(3895776, actual1)
-
-
-    val result2 = part2(testInput)
-    assert(230, result2)
-
-    val actual2 = part2(input)
-    println(actual2)
-    assert(7928162, actual2)
+    runAssert(
+        3,
+        230,
+        7928162,
+        ::part2
+    )
 }

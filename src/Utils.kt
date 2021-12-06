@@ -41,11 +41,13 @@ fun <TOutput> runAssert(
     val realInput = readInput(dayNumber)
 
     val testResult = func(testInput)
-    println("Test result: $testResult")
+    print("Test result: $testResult")
     check(testExpectedOutput == testResult) { "Expected: $testExpectedOutput. Actual: $testResult" }
+    println("  ✔")
 
     val realResult = func(realInput)
-    println("Real result: $realResult")
+    print("Real result: $realResult")
+    println("  ✔")
     check(realExpectedOutput == realResult) { "Expected: $realExpectedOutput. Actual: $realResult" }
 }
 

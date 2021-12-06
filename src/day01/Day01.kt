@@ -1,8 +1,6 @@
 package day01
 
-import assert
-import readInput
-import readTestInput
+import runAssert
 
 class Result(val previousNumber: Int = Int.MAX_VALUE, val count: Int = 0)
 
@@ -34,21 +32,21 @@ fun main() {
         return findCountOfIncreasingDepth(sums)
     }
 
-    val testInput = readTestInput(1)
-    val input = readInput(1)
+    println("Part 1:")
+    runAssert(
+        1,
+        7,
+        1477,
+        ::part1
+    )
 
-    val result1 = part1(testInput)
-    assert(7, result1)
+    println()
+    println("Part 2:")
 
-    val actual1 = part1(input)
-    println(actual1)
-    assert(1477, actual1)
-
-
-    val result2 = part2(testInput)
-    assert(5, result2)
-
-    val actual2 = part2(input)
-    println(actual2)
-    assert(1523, actual2)
+    runAssert(
+        1,
+        5,
+        1523,
+        ::part2
+    )
 }

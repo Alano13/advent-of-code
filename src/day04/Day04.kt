@@ -1,9 +1,7 @@
 package day04
 
-import assert
 import parseNumberLine
-import readInput
-import readTestInput
+import runAssert
 
 class Board(private val data: List<List<Int>> = ArrayList()) {
     fun getAllUnmarkedNumbers(numbersToMark: Set<Int>): List<Int> {
@@ -101,21 +99,21 @@ fun main() {
         throw Exception("Last winner not found")
     }
 
-    val testInput = readTestInput(4)
-    val input = readInput(4)
+    println("Part 1:")
+    runAssert(
+        4,
+        4512,
+        11774,
+        ::part1
+    )
 
-    val result1 = part1(testInput)
-    assert(4512, result1)
+    println()
+    println("Part 2:")
 
-    val actual1 = part1(input)
-    println(actual1)
-    assert(11774, actual1)
-
-
-    val result2 = part2(testInput)
-    assert(1924, result2)
-
-    val actual2 = part2(input)
-    println(actual2)
-    assert(4495, actual2)
+    runAssert(
+        4,
+        1924,
+        4495,
+        ::part2
+    )
 }

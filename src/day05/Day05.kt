@@ -1,8 +1,6 @@
 package day05
 
-import assert
-import readInput
-import readTestInput
+import runAssert
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -162,21 +160,21 @@ fun main() {
         return pointsWithOverlapping.count()
     }
 
-    val testInput = readTestInput(5)
-    val input = readInput(5)
+    println("Part 1:")
+    runAssert(
+        5,
+        5,
+        4745,
+        ::part1
+    )
 
-    val result1 = part1(testInput)
-    assert(5, result1)
+    println()
+    println("Part 2:")
 
-    val actual1 = part1(input)
-    println(actual1)
-    assert(4745, actual1)
-
-
-    val result2 = part2(testInput)
-    assert(12, result2)
-
-    val actual2 = part2(input)
-    println(actual2)
-    assert(18442, actual2)
+    runAssert(
+        5,
+        12,
+        18442,
+        ::part2
+    )
 }
