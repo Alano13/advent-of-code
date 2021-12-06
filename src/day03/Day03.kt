@@ -2,6 +2,7 @@ package day03
 
 import assert
 import readInput
+import readTestInput
 
 fun hasMoreZeros(input: List<String>, bitIndex: Int): Boolean {
     val zerosCount = input.count { number -> number[bitIndex] == '0' }
@@ -11,10 +12,10 @@ fun hasMoreZeros(input: List<String>, bitIndex: Int): Boolean {
 }
 
 fun findBestMatch(input: List<String>, byte: String): String {
-    for (i in 0..input[0].length) {
-        val b = input.filter { it.startsWith(byte.take(i + 1)) }
-        if (b.count() == 1) {
-            return b.first()
+    for (substringLength in 0..input[0].length) {
+        val matchedBytes = input.filter { it.startsWith(byte.take(substringLength + 1)) }
+        if (matchedBytes.count() == 1) {
+            return matchedBytes.first()
         }
     }
 
@@ -41,16 +42,16 @@ fun main() {
     fun part2(input: List<String>): Int {
         val size = input[0].length - 1
 
-        var i1 = input
+        var byteList1 = input
         val byteOfMostBits = (0..size)
             .toList()
             .joinToString("") { bitIndex ->
-                if (hasMoreZeros(i1, bitIndex)) {
-                    i1 = i1.filter { it[bitIndex] == '0' }
+                if (hasMoreZeros(byteList1, bitIndex)) {
+                    byteList1 = byteList1.filter { it[bitIndex] == '0' }
 
                     "0"
                 } else {
-                    i1 = i1.filter { it[bitIndex] == '1' }
+                    byteList1 = byteList1.filter { it[bitIndex] == '1' }
 
                     "1"
                 }
@@ -58,16 +59,16 @@ fun main() {
 
         val oxygenRating = findBestMatch(input, byteOfMostBits).toInt(2)
 
-        var i2 = input
+        var byteList2 = input
         val byteOfLeastBits = (0..size)
             .toList()
             .joinToString("") { bitIndex ->
-                if (hasMoreZeros(i2, bitIndex)) {
-                    i2 = i2.filter { it[bitIndex] == '1' }
+                if (hasMoreZeros(byteList2, bitIndex)) {
+                    byteList2 = byteList2.filter { it[bitIndex] == '1' }
 
                     "1"
                 } else {
-                    i2 = i2.filter { it[bitIndex] == '0' }
+                    byteList2 = byteList2.filter { it[bitIndex] == '0' }
 
                     "0"
                 }
@@ -78,19 +79,19 @@ fun main() {
         return oxygenRating * co2Rating
     }
 
-    val testInput = readInput("Day03_test")
+    val testInput = readTestInput(3)
+    val input = readInput(3)
 
     val result1 = part1(testInput)
     assert(198, result1)
 
-    val result2 = part2(testInput)
-    assert(230, result2)
-
-    val input = readInput("Day03")
-
     val actual1 = part1(input)
     println(actual1)
     assert(3895776, actual1)
+
+
+    val result2 = part2(testInput)
+    assert(230, result2)
 
     val actual2 = part2(input)
     println(actual2)

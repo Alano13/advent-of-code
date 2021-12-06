@@ -3,9 +3,20 @@ import java.math.BigInteger
 import java.security.MessageDigest
 
 /**
- * Reads lines from the given input txt file.
+ * Reads input for specific day.
  */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
+fun readInput(dayNumber: Int): List<String> {
+    val dayNumberStr = dayNumber.toString().padStart(2, '0')
+    return File("src", "day$dayNumberStr/Day$dayNumberStr.txt").readLines()
+}
+
+/**
+ * Reads test input for specific day.
+ */
+fun readTestInput(dayNumber: Int): List<String> {
+    val dayNumberStr = dayNumber.toString().padStart(2, '0')
+    return File("src", "day$dayNumberStr/Day${dayNumberStr}_test.txt").readLines()
+}
 
 /**
  * Converts string to md5 hash.

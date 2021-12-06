@@ -2,6 +2,7 @@ package day02
 
 import assert
 import readInput
+import readTestInput
 
 fun main() {
     fun part1(input: List<String>): Int {
@@ -11,7 +12,7 @@ fun main() {
         for (line in input) {
             val (command, numberStr) = line.split(" ")
             val number = numberStr.toInt()
-            
+
             when (command) {
                 "forward" -> position += number
                 "down" -> depth += number
@@ -44,19 +45,19 @@ fun main() {
         return depth * position
     }
 
-    val testInput = readInput("Day02_test")
+    val testInput = readTestInput(2)
+    val input = readInput(2)
 
     val result1 = part1(testInput)
     assert(150, result1)
 
-    val result2 = part2(testInput)
-    assert(900, result2)
-
-    val input = readInput("Day02")
-
     val actual1 = part1(input)
     println(actual1)
     assert(1507611, actual1)
+
+
+    val result2 = part2(testInput)
+    assert(900, result2)
 
     val actual2 = part2(input)
     println(actual2)
