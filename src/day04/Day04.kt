@@ -5,7 +5,7 @@ import runAssert
 
 class Board(private val data: List<List<Int>> = ArrayList()) {
     fun getAllUnmarkedNumbers(numbersToMark: Set<Int>): List<Int> {
-        return data.flatMap { it.filter { number -> !numbersToMark.contains(number) } }
+        return data.flatMap { it.filter { number -> number !in numbersToMark } }
     }
 
     fun hasWinLine(numbersToMark: Set<Int>): Boolean {
@@ -13,14 +13,14 @@ class Board(private val data: List<List<Int>> = ArrayList()) {
     }
 
     private fun getWinRowOrNull(numbersToMark: Set<Int>): List<Int>? {
-        return data.firstOrNull { it.all { number -> numbersToMark.contains(number) } }
+        return data.firstOrNull { it.all { number -> number in numbersToMark } }
     }
 
     private fun getWinColumnOrNull(numbersToMark: Set<Int>): List<Int>? {
         for (columnIndex in data.indices) {
             val columnNumbers = data.map { line -> line[columnIndex] }
 
-            if (columnNumbers.all { number -> numbersToMark.contains(number) }) {
+            if (columnNumbers.all { number -> number in numbersToMark }) {
                 return columnNumbers
             }
         }

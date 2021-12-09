@@ -47,7 +47,7 @@ class Line(val start: Point, val end: Point) {
             return listOf()
         }
 
-        if (!allowedTypes.contains(lineType)) {
+        if (lineType !in allowedTypes) {
             return listOf()
         }
 
@@ -98,7 +98,7 @@ fun displayBoard(board: HashMap<Point, Int>, maxX: Int, maxY: Int) {
     for (rowIndex in 0..maxY) {
         print("$rowIndex)")
         for (columnIndex in 0..maxX) {
-            if (board.contains(Point(columnIndex, rowIndex))) {
+            if (Point(columnIndex, rowIndex) in board) {
                 print(board[Point(columnIndex, rowIndex)])
             } else {
                 print('.')
