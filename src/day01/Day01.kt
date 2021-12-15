@@ -26,7 +26,6 @@ fun main() {
         val depths = input.map(String::toInt)
 
         val sums = (0.. depths.size - 3)
-            .toList()
             .map { index -> depths[index] + depths[index + 1] + depths[index + 2]}
 
         return findCountOfIncreasingDepth(sums)

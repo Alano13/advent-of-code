@@ -13,7 +13,6 @@ fun main() {
         val min = positions.minOf { it }
 
         return (min..max)
-            .toList()
             .minOf { optimalPositionToCheck ->
                 positions.sumOf { position ->
                     abs(position - optimalPositionToCheck)
@@ -30,11 +29,9 @@ fun main() {
         val min = positions.minOf { it }
 
         return (min..max)
-            .toList()
             .minOf { optimalPositionToCheck ->
                 positions.sumOf { position ->
                     (0..abs(position - optimalPositionToCheck))
-                        .toList()
                         .sum()
                 }
             }

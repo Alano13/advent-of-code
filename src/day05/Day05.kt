@@ -53,17 +53,14 @@ class Line(val start: Point, val end: Point) {
 
         when (lineType) {
             LineType.VERTICAL -> return (min(start.x, end.x)..max(start.x, end.x))
-                .toList()
                 .map { Point(it, start.y) }
             LineType.HORIZONTAL -> return (min(start.y, end.y)..max(start.y, end.y))
-                .toList()
                 .map { Point(start.x, it) }
             LineType.DIAGONAL -> {
                 val minXPoint = if (start.x < end.x) start else end
                 val minYPoint = if (start.y < end.y) start else end
 
                 return (0..max(start.x, end.x) - min(start.x, end.x))
-                    .toList()
                     .map {
                         Point(
                             if (start == minXPoint) start.x + it else start.x - it,

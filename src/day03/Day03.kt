@@ -25,12 +25,10 @@ fun main() {
         val size = input[0].length - 1
 
         val gamma = (0..size)
-            .toList()
             .joinToString("") { if (hasMoreZeros(input, it)) "0" else "1" }
             .toInt(2)
 
         val epsilon = (0..size)
-            .toList()
             .joinToString("") { if (hasMoreZeros(input, it)) "1" else "0" }
             .toInt(2)
 
@@ -42,7 +40,6 @@ fun main() {
 
         var byteList1 = input
         val byteOfMostBits = (0..size)
-            .toList()
             .joinToString("") { bitIndex ->
                 if (hasMoreZeros(byteList1, bitIndex)) {
                     byteList1 = byteList1.filter { it[bitIndex] == '0' }
@@ -59,7 +56,6 @@ fun main() {
 
         var byteList2 = input
         val byteOfLeastBits = (0..size)
-            .toList()
             .joinToString("") { bitIndex ->
                 if (hasMoreZeros(byteList2, bitIndex)) {
                     byteList2 = byteList2.filter { it[bitIndex] == '1' }

@@ -87,7 +87,7 @@ fun main() {
     }
 
     fun part1(input: List<String>): Int {
-        val heightMap = HeightMap(input.map { line -> line.map { it.toString().toInt() }.toList() })
+        val heightMap = HeightMap(input.map { line -> line.map { it.toString().toInt() } })
 
         val lowPoints = heightMap.findLowPoints()
         displayPoints(heightMap, lowPoints)
@@ -98,7 +98,7 @@ fun main() {
 
     fun part2(input: List<String>): Int {
         println()
-        val heightMap = HeightMap(input.map { line -> line.map { it.toString().toInt() }.toList() })
+        val heightMap = HeightMap(input.map { line -> line.map { it.toString().toInt() } })
 
         val lowPoints = heightMap.findLowPoints()
 
