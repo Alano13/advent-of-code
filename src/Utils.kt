@@ -7,7 +7,13 @@ import java.security.MessageDigest
  */
 fun readInput(dayNumber: Int): List<String> {
     val dayNumberStr = dayNumber.toString().padStart(2, '0')
-    return File("src", "day$dayNumberStr/Day$dayNumberStr.txt").readLines()
+    val lines = File("src", "day$dayNumberStr/Day$dayNumberStr.txt").readLines()
+
+    if (lines.isEmpty() || (lines.size == 1 && lines[0].isEmpty())) {
+        throw Exception("Empty test file!")
+    }
+
+    return lines
 }
 
 /**
@@ -15,7 +21,13 @@ fun readInput(dayNumber: Int): List<String> {
  */
 fun readTestInput(dayNumber: Int): List<String> {
     val dayNumberStr = dayNumber.toString().padStart(2, '0')
-    return File("src", "day$dayNumberStr/Day${dayNumberStr}_test.txt").readLines()
+    val lines = File("src", "day$dayNumberStr/Day${dayNumberStr}_test.txt").readLines()
+
+    if (lines.isEmpty() || (lines.size == 1 && lines[0].isEmpty())) {
+        throw Exception("Empty test file!")
+    }
+
+    return lines
 }
 
 /**
@@ -41,17 +53,17 @@ fun <TOutput> runAssert(
     val realInput = readInput(dayNumber)
 
     print("Test result: ")
-    val testResult = func(testInput)
-    print(testResult)
+    val testOutput = func(testInput)
+    print(testOutput)
 
-    check(testExpectedOutput == testResult) { "Expected: $testExpectedOutput. Actual: $testResult" }
+    check(testExpectedOutput == testOutput) { "Expected: $testExpectedOutput. Actual: $testOutput" }
     println("  ✔")
 
     print("Real result: ")
-    val realResult = func(realInput)
-    print(realResult)
+    val realOutput = func(realInput)
+    print(realOutput)
 
-    check(realExpectedOutput == realResult) { "Expected: $realExpectedOutput. Actual: $realResult" }
+    check(realExpectedOutput == realOutput) { "Expected: $realExpectedOutput. Actual: $realOutput" }
     println("  ✔")
 }
 
